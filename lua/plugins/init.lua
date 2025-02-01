@@ -97,6 +97,16 @@ return {
     lazy = false,
     version = false, -- Set this to "*" to always pull the latest release version, or set it to false to update to the latest code changes.
     opts = {
+      provider = "ollama",
+      vendors = {
+        ollama = {
+          __inherited_from = "openai",
+          endpoint = 'http://127.0.0.1:11434/v1',
+          model = 'qwen2.5-coder:7b',
+        }
+      },
+      auto_suggestions_provider = "ollama",
+
       -- provider = "ollama",
       -- vendors = {
       --   ollama = {
@@ -105,11 +115,12 @@ return {
       --     model = 'deepseek-r1:14b',
       --   }
       -- },
-      provider = "openai",
-      openai = {
-        endpoint = 'https://api.avalai.ir/v1',
-        model = 'gpt-4o-mini-2024-07-18',
-      }
+      -- provider = "openai",
+      -- openai = {
+      --   endpoint = 'https://api.avalai.ir/v1',
+      --   model = 'gpt-4o-mini-2024-07-18',
+      -- },
+      -- auto_suggestions_provider = "openai",
       -- add any opts here
     },
     -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
