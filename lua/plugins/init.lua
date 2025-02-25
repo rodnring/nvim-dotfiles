@@ -153,17 +153,28 @@ return {
       },
     },
     {
-      "monkoose/neocodeium",
-      event = "VeryLazy",
-      config = function()
-        local neocodeium = require("neocodeium")
-        neocodeium.setup()
-        vim.keymap.set("i", "<A-f>", neocodeium.accept)
-      end,
-    },
-    {
       "github/copilot.vim"
     },
     { "mattn/emmet-vim" },
+    {
+      "gennaro-tedesco/nvim-possession",
+      dependencies = {
+        "ibhagwan/fzf-lua",
+      },
+      config = true,
+      keys = {
+        { "<leader>sl", function() require("nvim-possession").list() end, desc = "📌list sessions", },
+        { "<leader>sn", function() require("nvim-possession").new() end, desc = "📌create new session", },
+        { "<leader>su", function() require("nvim-possession").update() end, desc = "📌update current session", },
+        { "<leader>sd", function() require("nvim-possession").delete() end, desc = "📌delete selected session" },
+      },
+    },
+    {
+      'milanglacier/minuet-ai.nvim',
+      lazy = false,
+      config = function()
+        require "configs.minuet-ai"
+      end,
+    },
   }
 }
