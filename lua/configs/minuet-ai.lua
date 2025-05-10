@@ -23,14 +23,17 @@ require('minuet').setup {
   -- of 512, serves as an good starting point to estimate your computing
   -- power. Once you have a reliable estimate of your local computing power,
   -- you should adjust the context window to a larger value.
-  context_window = 2048,
+  context_window = 1024,
+  context_ratio = 0.75,
+  debounce = 3000,
+  throttle = 1100,
   provider_options = {
     openai_fim_compatible = {
       api_key = 'TERM',
-      name = 'Qwen2.5-coder',
+      name = 'Qwen2.5-coder .5',
       stream = true,
-      end_point = 'http://192.168.10.97:11434/v1/completions',
-      model = 'qwen2.5-coder:7b',
+      end_point = 'https://api.avalai.ir/v1/completions',
+      model = 'deepseek-coder',
       optional = {
         max_tokens = 1024,
         top_p = 0.9,
