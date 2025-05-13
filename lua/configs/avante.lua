@@ -7,7 +7,7 @@ local options = {
         --     model = 'deepseek-r1:14b',
         --   }
         -- },
-        provider = "claude",
+        provider = "openai",
         openai = {
           endpoint = "https://api.avalai.ir/v1",
           model = "gpt-4o-mini-2024-07-18",
