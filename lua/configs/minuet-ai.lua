@@ -23,7 +23,7 @@ require('minuet').setup {
   -- of 512, serves as an good starting point to estimate your computing
   -- power. Once you have a reliable estimate of your local computing power,
   -- you should adjust the context window to a larger value.
-  context_window = 2048,
+  context_window = 4096,
   provider_options = {
     openai_fim_compatible = {
       api_key = 'TERM',
@@ -32,8 +32,20 @@ require('minuet').setup {
       end_point = 'http://localhost:11434/v1/completions',
       model = 'qwen2.5-coder:7b',
       optional = {
-        max_tokens = 1024,
-        top_p = 0.9,
+        context_window_size = 4096, -- set this value to your local computing power
+        n_completions = 1,
+        temperature = 0.2,
+        max_tokens = 2048,
+        frequency_penalty = 0.5,
+        presence_penalty = 0.5,
+        stop_words = {},
+        echo = false,
+        stream = true,
+        n_predict = -1,
+        logprobs = nil,
+        best_of = 1,
+        user = '',
+        top_p = 0.4,
       },
     },
   },

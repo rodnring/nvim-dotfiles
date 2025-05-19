@@ -16,17 +16,17 @@ return {
     lazy = false,
   },
   {
-    "tveskag/nvim-blame-line"
+    "tveskag/nvim-blame-line",
   },
   {
     "NeogitOrg/neogit",
     lazy = false,
     dependencies = {
-      "nvim-lua/plenary.nvim",         -- required
-      "sindrets/diffview.nvim",        -- optional - Diff integration
+      "nvim-lua/plenary.nvim", -- required
+      "sindrets/diffview.nvim", -- optional - Diff integration
       "nvim-telescope/telescope.nvim", -- optional
     },
-    config = true
+    config = true,
   },
   {
     "folke/which-key.nvim",
@@ -40,7 +40,7 @@ return {
       {
         "<leader>?",
         function()
-          require("which-key").show({ global = false })
+          require("which-key").show { global = false }
         end,
         desc = "Buffer Local Keymaps (which-key)",
       },
@@ -50,9 +50,16 @@ return {
     "nvim-treesitter/nvim-treesitter",
     opts = {
       ensure_installed = {
-        "vim", "lua", "vimdoc",
-        "html", "css", "tsx", "jsdoc",
-        "json", "json5", "scss"
+        "vim",
+        "lua",
+        "vimdoc",
+        "html",
+        "css",
+        "tsx",
+        "jsdoc",
+        "json",
+        "json5",
+        "scss",
       },
     },
   },
@@ -63,7 +70,7 @@ return {
       require("neoscroll").setup()
     end,
   },
-  { 'akinsho/git-conflict.nvim', version = "*", config = true },
+  { "akinsho/git-conflict.nvim", version = "*", config = true },
   {
     "folke/twilight.nvim",
     lazy = false,
@@ -93,9 +100,9 @@ return {
   {
     "yetone/avante.nvim",
     event = "VeryLazy",
+    version = false,
     lazy = false,
-    version = false, -- Set this to "*" to always pull the latest release version, or set it to false to update to the latest code changes.
-    opts = require 'configs.avante',
+    opts = require "configs.avante",
     -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
     build = "make",
     -- build = "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false" -- for windows
@@ -104,12 +111,12 @@ return {
       "nvim-lua/plenary.nvim",
       "MunifTanjim/nui.nvim",
       --- The below dependencies are optional,
-      "echasnovski/mini.pick",       -- for file_selector provider mini.pick
+      "echasnovski/mini.pick", -- for file_selector provider mini.pick
       "nvim-telescope/telescope.nvim", -- for file_selector provider telescope
-      "hrsh7th/nvim-cmp",            -- autocompletion for avante commands and mentions
-      "ibhagwan/fzf-lua",            -- for file_selector provider fzf
+      "hrsh7th/nvim-cmp", -- autocompletion for avante commands and mentions
+      "ibhagwan/fzf-lua", -- for file_selector provider fzf
       "nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
-      "zbirenbaum/copilot.lua",      -- for providers='copilot'
+      "zbirenbaum/copilot.lua", -- for providers='copilot'
       {
         -- support for image pasting
         "HakonHarnes/img-clip.nvim",
@@ -129,7 +136,7 @@ return {
       },
       {
         -- Make sure to set this up properly if you have lazy=true
-        'MeanderingProgrammer/render-markdown.nvim',
+        "MeanderingProgrammer/render-markdown.nvim",
         opts = {
           file_types = { "markdown", "Avante" },
         },
@@ -148,15 +155,15 @@ return {
       "j-hui/fidget.nvim",
     },
     config = function()
-      require('codecompanion').setup({
+      require("codecompanion").setup {
         display = {
           action_palette = {
             width = 95,
             height = 10,
-            prompt = "Prompt ",                   -- Prompt used for interactive LLM calls
-            provider = "default",                 -- default|telescope|mini_pick
+            prompt = "Prompt ", -- Prompt used for interactive LLM calls
+            provider = "default", -- default|telescope|mini_pick
             opts = {
-              show_default_actions = true,        -- Show the default actions in the action palette?
+              show_default_actions = true, -- Show the default actions in the action palette?
               show_default_prompt_library = true, -- Show the default prompt library in the action palette?
             },
           },
@@ -184,7 +191,7 @@ return {
                 },
               },
               env = {
-                url = 'https://api.avalai.ir',
+                url = "https://api.avalai.ir",
                 api_key = "OPENAI_API_KEY",
               },
             })
@@ -199,7 +206,7 @@ return {
                 },
               },
               env = {
-                url = 'https://api.avalai.ir',
+                url = "https://api.avalai.ir",
                 api_key = "OPENAI_API_KEY",
               },
             })
@@ -210,14 +217,14 @@ return {
             adapter = "ollama_custom",
           },
           inline = {
-            adapter = "ollama_custom"
-          }
+            adapter = "ollama_custom",
+          },
         },
         init = function()
           require("configs.fidget-spinner"):init()
-        end
-      })
-    end
+        end,
+      }
+    end,
     -- opts = require "configs.codecompanion"
   },
   -- -- {
@@ -229,10 +236,24 @@ return {
   --   end,
   -- },
   {
-    'milanglacier/minuet-ai.nvim',
+    "milanglacier/minuet-ai.nvim",
     lazy = false,
     config = function()
       require "configs.minuet-ai"
+    end,
+  },
+  {
+    "ravitemer/mcphub.nvim",
+    dependencies = {
+      "nvim-lua/plenary.nvim", -- Required for Job and HTTP requests
+    },
+    -- comment the following line to ensure hub will be ready at the earliest
+    cmd = "MCPHub", -- lazy load by default
+    build = "npm install -g mcp-hub@latest", -- Installs required mcp-hub npm module
+    -- uncomment this if you don't want mcp-hub to be available globally or can't use -g
+    -- build = "bundled_build.lua",  -- Use this and set use_bundled_binary = true in opts  (see Advanced configuration)
+    config = function()
+      require("mcphub").setup()
     end,
   },
   -- {
@@ -267,4 +288,26 @@ return {
   --     completion = { trigger = { prefetch_on_insert = false } },
   --   }
   -- },
+  -- {
+  --   'ThePrimeagen/harpoon',
+  --   branch = 'harpoon2',
+  --   dependencies = { "nvim-lua/plenary.nvim"},
+  -- },
+  {
+    "m4xshen/hardtime.nvim",
+    dependencies = { "MunifTanjim/nui.nvim" },
+    opts = {},
+  },
+  {
+    "rachartier/tiny-code-action.nvim",
+    dependencies = {
+      { "nvim-lua/plenary.nvim" },
+      { "nvim-telescope/telescope.nvim" },
+    },
+    event = "LspAttach",
+    config = function()
+      require("tiny-code-action").setup()
+    end,
+  },
+  { import = "nvchad.blink.lazyspec" },
 }

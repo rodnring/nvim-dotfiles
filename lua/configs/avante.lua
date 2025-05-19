@@ -1,25 +1,53 @@
 local options = {
-  provider = "ollama",
+  provider = "openai",
   vendors = {
-    ollama = {
-      __inherited_from = "openai",
-      endpoint = 'http://127.0.0.1:11434/v1',
-      model = 'qwen2.5-coder:7b',
-      max_tokens = 4096,
+    vendors = {
+      ["avalai-claude"] = {
+        __inherited_from = "openai",
+        endpoint = "https://api.avalai.ir/v1",
+        model = "anthropic.claude-3-5-sonnet-20240620-v1:0",
+        max_tokens = 8192,
+        api_key_name = "OPENAI_API_KEY",
+      },
+      ["avalai-gemini"] = {
+        __inherited_from = "openai",
+        endpoint = "https://api.avalai.ir/v1",
+        model = "gemini-2.5-pro-preview-05-06",
+        temperature = 0.2,
+        max_tokens = 8192,
+        api_key_name = "OPENAI_API_KEY",
+      },
+      ["avalai-deepseek"] = {
+        __inherited_from = "openai",
+        endpoint = "https://api.avalai.ir/v1",
+        model = "deepseek-coder",
+        temperature = 0.2,
+        max_tokens = 4096,
+        api_key_name = "OPENAI_API_KEY",
+      },
     },
-    customik = {
-      __inherited_from = "openai",
-      endpoint = 'https://api.avalai.ir/v1',
-      model = 'gpt-4o-mini'
-    }
   },
   openai = {
-    endpoint = 'https://api.avalapis.ir/v1',
-    model = 'gpt-4o-mini',
+    endpoint = "https://api.avalai.ir/v1",
+    timeout = 30000,
+    temperature = 0.2,
+    model = "gpt-4o-mini",
+    max_tokens = 8192,
   },
   auto_suggestions_provider = "openai",
   behaviour = {
     auto_suggestions = false,
+  },
+  tools = {
+    {
+      name = "example_tool",
+      description = "An example tool for demonstration.",
+      param = {
+        fields = {
+          { name = "input_field", type = "string", description = "Input field description", optional = false },
+        },
+      },
+    },
   },
 }
 
