@@ -29,14 +29,14 @@ require('minuet').setup {
   throttle = 1100,
   provider_options = {
     openai_fim_compatible = {
-      api_key = 'TERM',
-      name = 'Qwen2.5-coder .5',
+      api_key = 'OPENAI_API_KEY',
+      name = 'claude-3-5-sonnet-20240620-v1',
       stream = true,
       end_point = 'https://api.avalai.ir/v1/completions',
-      model = 'deepseek-coder',
+      model = 'anthropic.claude-3-5-sonnet-20240620-v1:0',
       optional = {
         max_tokens = 1024,
-        top_p = 0.9,
+        top_p = 0.4,
       },
     },
   },
