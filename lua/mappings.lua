@@ -2,6 +2,8 @@ require "nvchad.mappings"
 
 -- add yours here
 
+require("nvchad.configs.lspconfig").defaults()
+
 local map = vim.keymap.set
 
 map("n", ";", ":", { desc = "CMD enter command mode" })
@@ -12,10 +14,18 @@ map("i", "jk", "<ESC>")
 map("n", "<leader>tz", ":ZenMode<CR>", { desc = "Zen mode" })
 map("n", "<leader>cc", ":CodeCompanionChat Toggle<CR>")
 map("n", "<leader>mt", ":Minuet virtualtext toggle<CR>")
-map("n", "<leader>ca", function()
-  require("tiny-code-action").code_action()
-end, { noremap = true, silent = true })
--- map("i", "<A-f>", function()
+
+map("n", "<Leader>ca", vim.lsp.buf.code_action, { desc = "LSP Code Action" })
+-- map("v", "<Leader>ca", ":lua vim.lsp.buf.range_code_action()<CR>", { desc = "LSP Range Code Action" })
+map("n", "<Leader>q", vim.diagnostic.open_float, { desc = "Diagnostic Quick Fix" })
+
+-- Additional helpful mappings
+
+--
+-- map("n", "<leader>ca", function()
+--   require("tiny-code-action").code_action()
+-- end, { noremap = true, silent = true })
+-- -- map("i", "<A-f>", function()
 --   require("neocodeium").accept()
 -- end)
 -- map("i", "<A-w>", function()

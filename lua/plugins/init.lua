@@ -1,5 +1,39 @@
 return {
   {
+    "saghen/blink.cmp",
+    dependencies = {
+      "Kaiser-Yang/blink-cmp-avante",
+      -- ... Other dependencies
+    },
+    opts = {
+      sources = {
+        -- Add 'avante' to the list
+        default = { "avante", "lsp", "path", "snippets", "buffer" },
+        providers = {
+          avante = {
+            module = "blink-cmp-avante",
+            name = "Avante",
+            opts = {
+              completion = {
+                autocomplete = { "Insert", "TextChanged" },
+                keyword_length = 2,
+              },
+              mapping = {
+                ["<C-n>"] = "next_item",
+                ["<C-p>"] = "prev_item",
+              },
+              sources = {
+                { name = "buffer" },
+                { name = "nvim_lsp" },
+                { name = "path" },
+              },
+            },
+          },
+        },
+      },
+    },
+  },
+  {
     "stevearc/conform.nvim",
     -- event = 'BufWritePre', -- uncomment for format on save
     opts = require "configs.conform",
