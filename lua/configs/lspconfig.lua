@@ -3,6 +3,7 @@ require("nvchad.configs.lspconfig").defaults()
 
 -- EXAMPLE
 local servers = {
+  "elixirls",
   "html",
   "cssls",
   "lua_ls",
@@ -14,6 +15,11 @@ local servers = {
   "clangd",
   "jsonls",
   "eslint",
+}
+
+vim.lsp.config["elixir-ls"] = {
+  cmd = { "/usr/lib/elixir-ls/language_server.sh" },
+  filetypes = { "elixir", "eelixir", "heex", "surface", "exs" },
 }
 
 vim.lsp.enable(servers)
