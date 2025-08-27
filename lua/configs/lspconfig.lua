@@ -15,11 +15,17 @@ local servers = {
   "clangd",
   "jsonls",
   "eslint",
+  "jdtls",
 }
 
 vim.lsp.config["elixir-ls"] = {
   cmd = { "/usr/lib/elixir-ls/language_server.sh" },
   filetypes = { "elixir", "eelixir", "heex", "surface", "exs" },
+}
+
+vim.lsp.config["java_language_server"] = {
+  cmd = {"/home/rodnring/.local/share/nvim/mason/bin/java-language-server"},
+  filetypes = {"java"},
 }
 
 vim.lsp.enable(servers)

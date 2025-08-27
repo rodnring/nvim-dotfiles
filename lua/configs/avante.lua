@@ -1,4 +1,5 @@
 local options = {
+  provider = "avalai-gpt4o-mini",
   providers = {
     ["avalai-claude"] = {
       __inherited_from = "openai",
@@ -132,8 +133,9 @@ local options = {
         max_tokens = 4096,
       },
     },
-    openai = {
+    ["avalai-gpt4o-mini"] = {
       endpoint = "https://api.avalai.ir/v1",
+      __inherited_from = "openai",
       extra_request_body = {
         timeout = 30000,
         temperature = 0.2,
@@ -147,17 +149,6 @@ local options = {
     behaviour = {
       enable_cursor_planning_mode = true, -- enable cursor planning mode!
       auto_suggestions = false,
-    },
-  },
-  tools = {
-    {
-      name = "example_tool",
-      description = "An example tool for demonstration.",
-      param = {
-        fields = {
-          { name = "input_field", type = "string", description = "Input field description", optional = false },
-        },
-      },
     },
   },
 }
